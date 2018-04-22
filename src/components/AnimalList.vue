@@ -50,11 +50,15 @@
       <thead>
         <th>Sector name</th>
         <th>Surface</th>
+        <th>&nbsp;</th>
       </thead>
       <tbody>
         <tr v-for="(sector, key) in sectors" :key="key">
           <td>{{ sector.name }}</td>
           <td>{{ sector.surface }}</td>
+          <td class="text-right">
+            <button class="btn btn-default btn-sm" @click="showAnimalsBySector(sector)">View list of animals</button>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -107,6 +111,15 @@ export default {
     addAnimal() {
       this.animals.push(this.newAnimal);
       this.newAnimal = {};
+    },
+    showAnimalsBySector(sector) {
+      const animalsList=[];
+      this.animals.forEach(animal => {
+        if (animal.sector && animal.sector.name === sector.name) {
+          animalsList.push(`${animal.name} ${animal.species}`);
+        }
+      });
+      alert(animalsList.toString());
     }
   }
 };
