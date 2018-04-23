@@ -96,7 +96,6 @@ export default {
           sector: sectors[0]
         }
       ],
-      newAnimal: {}
     };
   },
   methods: {
